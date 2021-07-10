@@ -82,12 +82,14 @@ const UA = $.isNode() ? (process.env.JD_USER_AGENT ? process.env.JD_USER_AGENT :
   }
   // 助力
   let res = [], res2 = [];
-  $.innerShInviteList = await getAuthorShareCode('https://raw.githubusercontent.com/smiek2221/scripts/master/summer_movement_one.json');
-  res2 = await getAuthorShareCode('https://raw.githubusercontent.com/smiek2221/scripts/master/summer_movement.json');
+  $.innerShInviteList = await getAuthorShareCode('https://ghproxy.com/https://raw.githubusercontent.com/smiek2221/scripts/master/summer_movement_one.json');
+  res2 = await getAuthorShareCode('https://ghproxy.com/https://raw.githubusercontent.com/smiek2221/scripts/master/summer_movement.json');
+  $.ShInviteLists = []
   if (ShHelpAuthorFlag) {
-    $.ShInviteLists = []
     $.innerShInviteLists = getRandomArrayElements([...res, ...res2], [...res, ...res2].length);
     $.ShInviteLists.push(...$.ShInviteList,...$.innerShInviteList,...$.innerShInviteLists);
+  }else{
+    $.ShInviteLists.push(...$.ShInviteList);
   }
   for (let i = 0; i < cookiesArr.length; i++) {
     $.cookie = cookiesArr[i];
